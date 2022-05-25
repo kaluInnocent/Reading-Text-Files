@@ -4,7 +4,7 @@
 # --> {"cake":2, "big":1, "is":2, "the":1, "a":1, "it":1}
 
 def read_file_content(filename):
-    with open(filename) as file:
+    with open(filename, 'r') as file:
         text = file.read()
     
     return text
@@ -12,5 +12,7 @@ def read_file_content(filename):
 
 def count_words():
     text = read_file_content("./story.txt")
+    text = text.split(' ')
 
-    return {txt: text.count(txt) for txt in text}
+    return {txt.strip(".,!?'\n'"): text.count(txt) for txt in text}
+
